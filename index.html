@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href ="style.css">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <script>const mode = getComputedStyle(document.documentElement).getPropertyValue('content');
+  </script>
+</head>
+<body>
+ <main class="calculator">
+   <div class="header">
+      <h1 class="title">calc</h1>
+        <div class="themes">
+          <p>THEME</p>
+          <div class="theme-toggle">
+            <div class="theme-numbers">
+              <div id="color-theme1" class="theme-number">1</div>
+              <div id="color-theme2" class="theme-number">2</div>
+              <div id="color-theme3"class="theme-number">3</div>
+            </div>
+          <div class="toggle-window">
+            <button aria-label="default theme" id="default" class="theme" ></button>
+            <button aria-label="light theme"id="light" class="theme" ></button>
+            <button aria-label="dark theme" id="dark" class="theme" ></button>
+          </div>
+        </div>
+      </div>
+      </div>
+   <div class="screen" >0</div>   
+  <div class ="buttons-part">
+    <button class="number">7</button>
+    <button class="number">8</button>
+    <button class="number">9</button>
+    <button  id = "del">DEL</span></button>
+
+    <button class="number">4</button>
+    <button class="number">5</button>
+    <button class="number">6</button>
+    <button class="operator" >+</button>
+    <button class="number" >1</button>
+    <button class="number" >2</button>
+    <button class="number" >3</button>
+   <button class="operator" >-</button>
+
+    <button class="number" >.</button>
+    <button class="number">0</button>
+    <button class="operator" >/</button>
+    <button class="operator" >x</button>
+    <button id="calc-button-reset">RESET</button>
+    <button id="equal"> = </button>
+    </div>
+
+  </main>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/preeti-14-7">Preeti Yadav</a>.
+  </div>
+   <script src="toggle.js"></script>
+  <script src="index.js"></script>
+ 
+</body>
+
+</html>

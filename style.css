@@ -1,0 +1,166 @@
+button {
+    border: none;
+    font-family: 'Spartan', sans-serif;
+    font-size: var(--num-size);
+}
+
+body {
+    background-color: hsl(222, 26%, 31%);
+
+}
+
+.calculator {
+   
+    font-family: 'Spartan', sans-serif;
+    margin: auto;
+    min-width: 375px;
+    max-width: 555px;
+    padding: 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+}
+p {
+    font-size: .75rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-right: 1rem;
+}
+.title, p, .theme-toggle, .screen {
+    color: white;
+}
+.themes {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.theme-toggle {
+    display: block;
+  
+}
+.theme-numbers {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+.theme-number {
+
+    padding: 0 .5rem;
+}
+.toggle-window {
+    background-color:  hsl(223, 31%, 20%);
+    border-radius: 16px;
+    display: flex;
+    height: 1.5rem;
+    overflow: hidden;
+    width: 100%;
+}
+
+.theme {
+    background-color: hsl(6, 63%, 50%);
+    border: none;
+    border-radius: 50%;
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    margin: 5px;
+}
+
+.screen {
+    background-color: hsl(224, 36%, 15%);
+    border-radius: 10px;
+    font-size: 32px;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    text-align: right;
+    width: 100%;
+}
+.buttons-part{
+    background-color: hsl(223, 31%, 20%);
+    border-radius: 10px;
+    display: grid;
+    font-size: 32px;
+    grid-gap: 1rem;
+    grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+    grid-auto-flow: row;
+    padding: 1.5rem;
+    width: 100%;
+}
+.number,.operator{
+    background-color:hsl(30, 25%, 89%);;
+    box-shadow: 0 5px hsl(28, 16%, 65%);
+    color: hsl(221, 14%, 31%);
+    padding: .8rem 0 .5rem 0;
+    text-align: center;
+    border-radius:10px;
+}
+#calc-button-reset
+{    
+    background-color: hsl(225, 21%, 49%);
+    box-shadow: 0 5px hsl(224, 28%, 35%);
+    margin-left:  15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    grid-column: span 2;
+    font-family:Spartan(url(https://fonts.google.com/specimen/Spartan));
+    color:white;
+    font-size: 1rem;
+}
+#equal{
+    color:white;
+    background-color: hsl(6, 63%, 50%);
+    box-shadow: 0 5px hsl(6, 70%, 34%);
+    font-size: 32px;
+    margin-left:  15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    grid-column: span 2;
+    font-family:Spartan(url(https://fonts.google.com/specimen/Spartan));
+}
+#del{
+    background-color: hsl(225, 21%, 49%);
+    box-shadow: 0 5px hsl(224, 28%, 35%);
+    font-family:Spartan(url(https://fonts.google.com/specimen/Spartan));
+    color:white;
+    padding: .8rem 0 .5rem 0;
+    text-align: center;
+    border-radius:10px;
+    font-size: 1rem;
+}
+button {
+    border: none;
+    font-family: 'Spartan', sans-serif;
+    font-size: 32px;
+}
+
+.number:focus, .number:hover,
+.operator:focus, .operator:hover {
+    box-shadow: none;
+    transform: translateY(3.5px);
+}
+
+#del:focus, #del:hover,
+#calc-button-reset:focus, #calc-button-reset:hover, 
+#equal:focus, #equal:hover {
+    box-shadow: none;
+}
+
+.attribution { 
+    background-color: hsl(222, 26%, 31%);
+    color: hsl(6, 63%, 50%);
+    font-size: 11px; text-align: center;
+    padding-bottom: 2rem;
+    min-width: 375px;
+    width: 100%;
+}
+
+.attribution a { 
+    color: white;
+}
