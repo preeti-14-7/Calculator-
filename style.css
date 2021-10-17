@@ -155,7 +155,7 @@ button {
 .attribution { 
     background-color: hsl(222, 26%, 31%);
     color: hsl(6, 63%, 50%);
-    font-size: 11px; text-align: center;
+    font-size: 20px; text-align: center;
     padding-bottom: 2rem;
     min-width: 375px;
     width: 100%;
