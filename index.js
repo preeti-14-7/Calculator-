@@ -6,7 +6,7 @@ const screen = document.querySelector(".screen");
 
 
 function handleSymbol(value){
-   if(value === "C")
+   if(value === "RESET")
    {
       buffer = "0";
       runningTotal = 0;
@@ -20,7 +20,7 @@ function handleSymbol(value){
        buffer = +runningTotal;
        runningTotal = 0;
    }
-   else if(value === "←"){
+   else if(value === "DEL"){
       if(buffer.length === 1)
       {
         buffer = "0";
@@ -91,7 +91,7 @@ function rerender(){
   screen.innerText = buffer;
 }
   function init() {
-    document.querySelector(".button-part")
+    document.querySelector(".buttons-part")
     .addEventListener("click", function(event) {
       buttonClick(event.target.innerText);
     });
