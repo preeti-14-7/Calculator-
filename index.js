@@ -1,100 +1,100 @@
-//Calculator functions
-const screen = document.getElementsByClassName("screen")[0];
-let screenNum = screen.innerHTML;
-let resultArr = [];
-let result=0;
-
-const delKey = document.getElementById("del");
-delKey.addEventListener('click', () => {
-
-    if(screenNum != 0) {
-        let temp = screenNum.toString();
-        console.log(temp)
-        if(temp.length == 1){
-            screenNum = 0;
-        }
-        //if no commas or .'s
-        else if(( !temp.includes('.')) && ( !temp.includes(','))) {
-            screenNum = splitJoin(temp);
-        } else if (temp.includes('.')){
-            screenNum = splitJoin(temp);
-        } else {
-            temp = splitJoin(temp);
-            temp = temp.toString().replace(/\,/g,'');
-            screenNum = parseInt(temp).toLocaleString('en-US');
-            console.log(temp)
-        }
-    } 
-    screen.innerHTML = screenNum;
-});
-
-function splitJoin(temp) {
-    temp = temp.split('');
-    temp.pop();
-    return temp.join('');
-}
-
-const resetKey = document.getElementById('calc-button-reset');
-resetKey.addEventListener('click', () => {
-    resultArr = [];
-    result = '';
-    screenNum = 0;
-    screen.innerHTML = screenNum;
-});
-
-const keys = document.getElementsByClassName("number");
-for(let i =0; i <keys.length; i++){
-    keys[i].addEventListener('click', changeScreenNum);
-}
-
-function changeScreenNum(ev) {
-    const keyNum = ev.target.innerHTML;
-    
-    if(screenNum == 0) {
-        screenNum = keyNum;
-    } //no commas beyond decimal point, so add keyNum to end
-    else if(((keyNum == '.') || (screenNum.toString().includes('.')) 
-        || (( !screenNum.toString().includes('.')) && (screenNum.length < 3)))){
-        screenNum = screenNum+keyNum;
-        // add commas to integers
-    } else {
-        let temp = screenNum.toString();
-            temp = temp.replace(/\,/g,'');
-            temp += keyNum;
-            screenNum = parseInt(temp).toLocaleString('en-US');
-        }
-    
-    screen.innerHTML = screenNum;
-}
+let runningTotal = 0;
+let buffer = "0";
+let previousOperator;
+const screen = document.querySelector(".screen");
 
 
-const operators = document.getElementsByClassName("operator");
-for(let i =0; i <operators.length; i++){
-    operators[i].addEventListener('click', addOperator);
-}
 
-function addOperator(ev){
-    let operator = ev.target.innerHTML;
-    if(operator == 'x') {
-        operator = '*';
+function handleSymbol(value){
+   if(value === "C")
+   {
+      buffer = "0";
+      runningTotal = 0;
+   }
+   else if(value === "="){
+    if (previousOperator === null) {
+      return;
     }
-    resultArr.push(screenNum);
-    resultArr.push(operator);
+       flushOperation(parseInt(buffer));
+       previousOperator = null;
+       buffer = +runningTotal;
+       runningTotal = 0;
+   }
+   else if(value === "←"){
+      if(buffer.length === 1)
+      {
+        buffer = "0";
+      }
+      else
+      {
+        buffer = buffer.substring(0, buffer.length - 1);
+      }
+   }
+   else{
+      handleMath(value);
+   }
+}
+
+function handleMath(value){
+    if(buffer === "0")
+         return ;
+    const intBuffer = parseInt(buffer);
     
-    screenNum = 0;
+    if(runningTotal === 0){
+        runningTotal = intBuffer;
+    }
+    else{
+        flushOperation(intBuffer);
+    }
+    previousOperator = value;
+
+    buffer =  "0";
 }
 
-const equals = document.getElementById('equals');
-equals.addEventListener('click', sum);
-
-function sum(ev){
-    resultArr.push(screenNum);
-    result = resultArr.join('');
-    //evaluate string 
-    screenNum = window.eval(result);
-    //set solution in the screen window
-    screen.innerHTML = screenNum;
-    //reset
-    resultArr = [];
-    result = '';
+function flushOperation(intBuffer){
+  
+  if(previousOperator === "x") {
+    runningTotal *= intBuffer;
+  } else if(previousOperator === "+") {
+    runningTotal += intBuffer;
+  } else if(previousOperator === "-") {
+    runningTotal -= intBuffer;
+  }
+  else if(previousOperator === "/")
+  {
+    runningTotal /= intBuffer;
+  }
 }
+
+function handleNumber(value){
+  if(buffer === "0")
+  {
+    buffer = value;
+  }
+  else{
+    buffer+= value;
+  }
+}
+
+function buttonClick(value){
+    if(isNaN(value))
+    {
+      handleSymbol(value);
+    }
+    else
+    {
+      handleNumber(value);
+    }
+    rerender();
+}
+function rerender(){
+  screen.innerText = buffer;
+}
+  function init() {
+    document.querySelector(".button-part")
+    .addEventListener("click", function(event) {
+      buttonClick(event.target.innerText);
+    });
+  }
+  
+  init();
