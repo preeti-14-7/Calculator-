@@ -6,7 +6,7 @@ const screen = document.querySelector(".screen");
 
 
 function handleSymbol(value){
-   if(value === "RESET")
+   if(value === "C")
    {
       buffer = "0";
       runningTotal = 0;
@@ -20,7 +20,7 @@ function handleSymbol(value){
        buffer = +runningTotal;
        runningTotal = 0;
    }
-   else if(value === "DEL"){
+   else if(value === "←"){
       if(buffer.length === 1)
       {
         buffer = "0";
